@@ -414,11 +414,6 @@ resource_fields:
   label: URL
   preset: resource_url_upload
 
-- field_name: name
-  label: Name
-  form_placeholder: eg. January 2011 Gold Prices
-  preset: text_enabled
-
 - field_name: format
   label: Format
   preset: resource_format_autocomplete
