@@ -138,10 +138,10 @@ dataset_fields:
   output_validators: ignore_missing
   preset: text_enabled
 
-- field_name: id_mskeg
-  label: Kode Metadata Kegiatan
-  output_validators: ignore_missing
-  preset: text_enabled
+# - field_name: id_mskeg
+#   label: Kode Metadata Kegiatan
+#   output_validators: ignore_missing
+#   preset: text_enabled
 
 - field_name: interpretasi
   label: Interpretasi
@@ -185,10 +185,10 @@ dataset_fields:
   output_validators: ignore_missing
   preset: text_enabled
 
-- field_name: id_kegiatan
-  label: ID Kegiatan
-  output_validators: ignore_missing
-  preset: text_enabled
+# - field_name: id_kegiatan
+#   label: ID Kegiatan
+#   output_validators: ignore_missing
+#   preset: text_enabled
 
 - field_name: judul_kegiatan
   label: Judul Kegiatan
