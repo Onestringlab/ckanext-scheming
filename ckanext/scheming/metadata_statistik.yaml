@@ -133,9 +133,9 @@ dataset_fields:
   label: Kode Metadata Indikator
   output_validators: ignore_missing
 
-- field_name: id_mskeg
-  label: Kode Metadata Kegiatan
-  output_validators: ignore_missing
+# - field_name: id_mskeg
+#   label: Kode Metadata Kegiatan
+#   output_validators: ignore_missing
 
 - field_name: interpretasi
   label: Interpretasi
@@ -173,9 +173,9 @@ dataset_fields:
   label: ID Kegiatan MMS
   output_validators: ignore_missing
 
-- field_name: id_kegiatan
-  label: ID Kegiatan
-  output_validators: ignore_missing
+# - field_name: id_kegiatan
+#   label: ID Kegiatan
+#   output_validators: ignore_missing
 
 - field_name: judul_kegiatan
   label: Judul Kegiatan
