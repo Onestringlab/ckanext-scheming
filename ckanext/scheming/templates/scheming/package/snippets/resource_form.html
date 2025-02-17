@@ -1,5 +1,4 @@
 {% extends 'package/snippets/resource_form.html' %}
-{% set dataset_type = dataset_type if dataset_type else 'dataset' %}
 
 {% block stages %}
   {%- set pages = h.scheming_get_dataset_form_pages(dataset_type) -%}
@@ -46,40 +45,6 @@
     might not be compatible with ckanext-scheming
     </p>
   {%- endif -%}
-
-{% if dataset_type == 'statistik' %}
-{% import 'macros/form.html' as form %}
-{% block basic_fields_url %}
-  <div class="control-group form-group">
-    <label for="field-private" class="control-label">{{ _('Nama Indikator') }}</label>
-        <div class="controls">
-            <select id="name" name="name" data-module="autocomplete">
-                <option value="">Pilih Nama Indikator</option>
-            </select>
-        </div>
-    </div>
-  
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const url = document.getElementById('name');
-
-    fetch('https://qc.data.go.id/api/skdn/mms/list/067')
-        .then(response => response.json())
-        .then(data => {
-            data.forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.name;
-                option.textContent = item.name;
-                url.appendChild(option);
-            });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-});
-</script>
-{% endblock %}
-{% endif %}
 
   {%- set schema = h.scheming_get_dataset_schema(dataset_type) -%}
   {%- for field in schema.resource_fields -%}
