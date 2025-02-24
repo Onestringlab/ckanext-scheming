@@ -1,0 +1,480 @@
+scheming_version: 2
+dataset_type: kurasi_stages
+about: A reimplementation of the default CKAN dataset schema
+about_url: http://github.com/ckan/ckanext-scheming
+
+
+dataset_fields:
+
+- field_name: title
+  label: Title
+  preset: title
+  form_placeholder: eg. A descriptive title
+
+- field_name: name
+  label: UUID Daftar Data
+  preset: dataset_slug
+  form_placeholder: eg. my-dataset
+
+- field_name: notes
+  label: Definisi
+  form_snippet: markdown.html
+  form_placeholder: eg. Some useful notes about the data
+
+- field_name: tag_string
+  label: Konsep
+  preset: tag_string_autocomplete
+  form_placeholder: eg. economy, mental health, government
+
+- field_name: owner_org
+  label: Organization
+  preset: dataset_organization
+
+- field_name: url
+  label: Source
+  form_placeholder: http://example.com/dataset.json
+  display_property: foaf:homepage
+  display_snippet: link.html
+
+- field_name: version
+  label: Version
+  validators: ignore_missing unicode_safe package_version_validator
+  form_placeholder: '1.0'
+
+- field_name: author
+  label: Produsen Data
+  form_placeholder: eg. Direktorat Alokasi Pendanaan Pembangunan
+  display_property: dc:creator
+
+- field_name: author_email
+  label: Email Produsen Data
+  form_placeholder: joe@example.com
+  display_property: dc:creator
+  display_snippet: email.html
+  display_email_name_field: author
+
+- field_name: maintainer
+  label: Walidata
+  form_placeholder: eg. Pusat Data dan Informasi
+  display_property: dc:contributor
+
+- field_name: maintainer_email
+  label: Email Walidata
+  form_placeholder: joe@example.com
+  display_property: dc:contributor
+  display_snippet: email.html
+  display_email_name_field: maintainer
+
+- field_name: kurasi_notes
+  label: Catatan Kurator
+  preset: multiple_checkbox
+  choices:
+  - value: broken_link
+    label: Broken Link
+  - value: invalid_format
+    label: Format file tidak sesuai
+  - value: dataprioritas_invalid
+    label: Judul Data Prioritas Tidak Sesuai dengan Kepmen PPN/Bappenas tentang Penetapan Data Prioritas
+  - value: not_complete_metadata
+    label: Data Prioritas Tidak Dilengkapi dengan Metadata
+  - value: invalid_content
+    label: Konten Dataset Tidak Sesuai dengan Judul
+  - value: privacy_data
+    label: Ekspos Data Pribadi
+  - value: invalid_tusi
+    label: Data Diluar Tupoksi Instansi
+  - value: expired_data
+    label: Periode Updata Data Sudah Kadaluarsa
+  - value: not_complete
+    label: Penyajian Data Tidak Lengkap
+
+- field_name: kurasi_notes_extra
+  label: Catatan Tambahan Kurator
+  output_validators: ignore_missing
+  form_placeholder: Jika kondisi kurasi dataset tidak terdapat pada list diatas, silahkan isi catatan kurasi data
+
+- field_name: kurasi_user
+  label: Kurator
+  output_validators: ignore_missing
+
+- field_name: pemadanan_data_prioritas
+  label: Pemadanan Data Prioritas
+  output_validators: ignore_missing
+
+- field_name: publishing_status 
+  label: Publishing Status 
+  form_snippet: null 
+  display_snippet: null 
+  validators: ignore_missing publishing_status_validator
+
+- field_name: review_status
+  label: Review Status
+  help_text: Make and model
+  help_inline: true
+  preset: select
+  choices:
+  - value: rejected
+    label: Rejected
+  - value: tbc
+    label: To Be Confirm
+
+#### METADATA DAFTAR DATA ####
+
+- field_name: accrualPeriodicity
+  label: Periode Data
+  output_validators: ignore_missing
+
+- field_name: accessRights
+  label: Akses Data
+  help_text: Make and model
+  help_inline: true
+  preset: select
+  choices:
+  - value: terbuka
+    label: Terbuka
+  - value: terbatas
+    label: Terbatas
+  - value: tertutup
+    label: Tertutup
+
+- field_name: id_dds
+  label: Kode Daftar Data
+  output_validators: ignore_missing
+
+- field_name: id_indikator_mms
+  label: Kode Indikator MMS
+  output_validators: ignore_missing
+
+- field_name: id_sds
+  label: Kode Standar Data
+  output_validators: ignore_missing
+
+- field_name: satuan
+  label: Satuan
+  output_validators: ignore_missing
+
+- field_name: ukuran
+  label: Ukuran
+  output_validators: ignore_missing  
+
+- field_name: jenis
+  label: Jenis Data
+  output_validators: ignore_missing
+
+- field_name: theme
+  label: Kategori
+  output_validators: ignore_missing
+
+- field_name: prioritas_tahun
+  label: Data Prioritas
+  output_validators: ignore_missing
+
+- field_name: kriteria_prioritas
+  label: Kriteria Prioritas
+  output_validators: ignore_missing
+
+- field_name: indikator_prioritas
+  label: Indikator Prioritas
+  output_validators: ignore_missing
+
+# - field_name: publisher_type
+#   label: Tipe Instansi
+#   help_text: Make and model
+#   help_inline: true
+#   preset: select
+#   choices:
+#   - value: pusat
+#     label: Kementerian/Lembaga
+#   - value: daerah-provinsi
+#     label: Provinsi
+#   - value: daerah-kota
+#     label: Kota
+#   - value: daerah-kabupaten
+#     label: Kabupaten
+
+#### METADATA INDIKATOR ####
+
+- field_name: id_msind
+  label: Kode Metadata Indikator
+  output_validators: ignore_missing
+
+- field_name: id_mskeg
+  label: Kode Metadata Kegiatan
+  output_validators: ignore_missing
+
+- field_name: interpretasi
+  label: Interpretasi
+  output_validators: ignore_missing
+
+- field_name: metode_perhitungan
+  label: Metode Perhitungan
+  output_validators: ignore_missing
+
+- field_name: rumus
+  label: Rumus
+  output_validators: ignore_missing
+
+- field_name: klasifikasi
+  label: Variabel Disaggregasi/Klasifikasi
+  output_validators: ignore_missing
+
+- field_name: kodereferensi
+  label: Kode Referensi
+  form_placeholder: https://sirusa.web.bps.go.id/metadata/kegiatan/185
+  display_property: foaf:https://sirusa.web.bps.go.id/metadata/kegiatan/
+  display_snippet: link.html
+
+- field_name: indikator_komposit
+  label: Indikator Komposit
+  output_validators: ignore_missing
+
+- field_name: level_estimasi
+  label: Level Estimasi
+  output_validators: ignore_missing
+
+##### METADATA KEGIATAN #####
+
+- field_name: id_kegiatan_mms
+  label: ID Kegiatan MMS
+  output_validators: ignore_missing
+
+- field_name: id_kegiatan
+  label: ID Kegiatan
+  output_validators: ignore_missing
+
+- field_name: judul_kegiatan
+  label: Judul Kegiatan
+  output_validators: ignore_missing
+
+- field_name: tahun_kegiatan
+  label: Tahun Kegiatan
+  output_validators: ignore_missing
+
+- field_name: jenis_statistik
+  label: Jenis Statistik
+  output_validators: ignore_missing
+
+- field_name: cara_pengumpulan_data
+  label: Cara Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: sektor_kegiatan
+  label: Sektor Kegiatan
+  output_validators: ignore_missing
+
+- field_name: identitas_rekomendasi
+  label: Identitas Rekomendasi
+  output_validators: ignore_missing
+
+- field_name: i_instansi_penyelanggara
+  label: Instansi Penyelenggara
+  output_validators: ignore_missing
+
+- field_name: i_alamat
+  label: Alamat Instansi
+  output_validators: ignore_missing
+
+- field_name: i_telepon
+  label: No. Telepon Instansi
+  output_validators: ignore_missing
+
+- field_name: i_email
+  label: Email Instansi
+  form_placeholder: joe@example.com
+  display_property: dc:contributor
+  display_snippet: email.html
+  display_email_name_field: maintainer
+
+- field_name: i_faksimile
+  label: No. Faksimile Instansi
+  output_validators: ignore_missing
+
+- field_name: ii_unit_eselon1
+  label: Unit Eselon 1
+  output_validators: ignore_missing
+
+- field_name: ii_unit_eselon2
+  label: Unit Eselon 2
+  output_validators: ignore_missing
+
+- field_name: ii_pj_nama
+  label: Nama Penanggungjawab
+  output_validators: ignore_missing
+
+- field_name: ii_pj_jabatan
+  label: Jabatan Penanggungjawab
+  output_validators: ignore_missing
+
+- field_name: ii_pj_alamat
+  label: Alamat Penanggungjawab
+  output_validators: ignore_missing
+
+- field_name: ii_pj_telepon
+  label: No. Telepon Penanggungjawab
+  output_validators: ignore_missing
+
+- field_name: ii_pj_email
+  label: Email Penanggungjawab
+  output_validators: ignore_missing
+
+- field_name: ii_pj_faksimile
+  label: No. Faksimile Penanggungjawab
+  output_validators: ignore_missing
+
+- field_name: iii_latar_belakang_kegiatan
+  label: Latar Belakang Kegiatan
+  output_validators: ignore_missing
+
+- field_name: iii_tujuan_kegiatan
+  label: Tujuan Kegiatan
+  output_validators: ignore_missing
+
+- field_name: iv_kegiatan_ini_dilakukan
+  label: Kegiatan Ini Dilakukan
+  output_validators: ignore_missing
+
+- field_name: iv_frekuensi_penyelanggara
+  label: Frekuensi Penyelenggara
+  output_validators: ignore_missing
+
+- field_name: iv_tipe_pengumpulan_data
+  label: Tipe Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: iv_cakupan_wilayah_pengumpulan_data
+  label: Cakupan Wilayah Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: iv_metode_pengumpulan_data
+  label: Metode Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: iv_sarana_pengumpulan_data
+  label: Sarana Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: iv_unit_pengumpulan_data
+  label: Unit Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: v_jenis_rancangan_sampel
+  label: Jenis Rancangan Sampel
+  output_validators: ignore_missing
+
+- field_name: v_metode_pemilihan_sampel_tahap_terakhir
+  label: Metode Pemilihan Sampel Tahap Terakhir
+  output_validators: ignore_missing
+
+- field_name: v_metode_yang_digunakan
+  label: Metode Yang Digunakan
+  output_validators: ignore_missing
+
+- field_name: v_kerangka_sampel_tahap_terakhir
+  label: Kerangka Sampel Tahap Terakhir
+  output_validators: ignore_missing
+
+- field_name: v_fraksi_sampel_keseluruhan
+  label: Kerangka Sampel Tahap Terakhir
+  output_validators: ignore_missing
+
+- field_name: v_nilai_perkiraan_sampling_error_variabel_utama
+  label: Nilai Perkiraan Sampling Error Variabel Utama
+  output_validators: ignore_missing
+
+- field_name: v_unit_sampel
+  label: Unit Sampel
+  output_validators: ignore_missing
+
+- field_name: v_unit_observasi
+  label: Unit Observasi
+  output_validators: ignore_missing
+
+- field_name: vi_apakah_melakukan_uji_coba
+  label: Apakah Melakukan Uji Coba
+  output_validators: ignore_missing
+
+- field_name: vi_metode_pemeriksaan_kualitas_pengumpulan_data
+  label: Metode Pemeriksaan Kualitas Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: vi_apakah_melakukan_penyesuaian_nonrespon
+  label: Apakah Melakukan Penyesuaian Nonrespon
+  output_validators: ignore_missing
+
+- field_name: vi_petugas_pengumpulan_data
+  label: Petugas Pengumpulan Data
+  output_validators: ignore_missing
+
+- field_name: vi_persyaratan_pendidikan_terendah_petugas_pengumpulan_data
+  label: Persyaratan Pendidikan Terendah Petugas
+  output_validators: ignore_missing
+
+- field_name: vi_jumlah_petugas_supervisor
+  label: Jumlah Petugas Supervisor
+  output_validators: ignore_missing
+
+- field_name: vi_jumlah_petugas_enumerator
+  label: Jumlah Petugas Enumerator
+  output_validators: ignore_missing
+
+- field_name: vi_apakah_melakukan_pelatihan_petugas
+  label: Apakah Melakukan Pelatihan Petugas
+  output_validators: ignore_missing
+
+- field_name: vii_tahapan_pengolahan_data
+  label: Tahapan Pengolahan Data
+  output_validators: ignore_missing
+
+- field_name: vii_metode_analisis
+  label: Metode Analisis
+  output_validators: ignore_missing
+
+- field_name: vii_unit_analisis
+  label: Unit Analisis
+  output_validators: ignore_missing
+
+- field_name: vii_tingkat_penyajian_hasil_analisis
+  label: Tingkat Penyajian Hasil Analisis
+  output_validators: ignore_missing
+
+- field_name: viii_ketersediaan_produk_tercetak
+  label: Ketersediaan Produk Tercetak
+  output_validators: ignore_missing
+
+- field_name: viii_ketersediaan_produk_digital
+  label: Ketersediaan Produk Digital
+  output_validators: ignore_missing
+
+- field_name: viii_ketersediaan_produk_mikrodata
+  label: Ketersediaan Produk Mikrodata
+  output_validators: ignore_missing
+
+- field_name: produsen_data_name
+  label: Nama Produsen Data
+  output_validators: ignore_missing
+
+- field_name: total_msvar
+  label: Total MS-VAR
+  output_validators: ignore_missing
+
+- field_name: total_msind
+  label: Total MS-IND
+  output_validators: ignore_missing
+
+- field_name: submission_period
+  label: Periode Submission
+  output_validators: ignore_missing
+
+resource_fields:
+
+- field_name: url
+  label: URL
+  preset: resource_url_upload
+
+- field_name: name
+  label: Name
+  form_placeholder: eg. January 2011 Gold Prices
+
+- field_name: format
+  label: Format
+  preset: resource_format_autocomplete
