@@ -125,11 +125,11 @@ dataset_fields:
   - value: daerah-kabupaten
     label: Kabupaten
 
-- field_name: publishing_status 
-  label: Publishing Status 
-  form_snippet: null 
-  display_snippet: null 
-  validators: default("draft") publishing_status_validator
+# - field_name: publishing_status 
+#   label: Publishing Status 
+#   form_snippet: null 
+#   display_snippet: null 
+#   validators: ignore_missing publishing_status_validator
 
 #### METADATA INDIKATOR ####
 
@@ -489,3 +489,8 @@ resource_fields:
 - field_name: format
   label: Format
   preset: resource_format_autocomplete
+
+package_extra_fields:
+  - field_name: publishing_status
+    label: Publishing Status
+    validators: ignore_missing
