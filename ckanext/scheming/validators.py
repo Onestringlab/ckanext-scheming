@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-*
 
 import re
 import unicodedata
@@ -6,7 +6,7 @@ import unicodedata
 from six import text_type
 
 from ckan.plugins.toolkit import _, h, get_action, ValidationError
-from ckan.lib.navl.validators import StopOnError
+from ckan.lib.navl.validators import StopOnError, ignore_missing, not_empty
 from ckan.authz import is_sysadmin
 from ckan import model
 
