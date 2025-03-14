@@ -129,7 +129,7 @@ dataset_fields:
   label: Publishing Status 
   form_snippet: null 
   display_snippet: null 
-  validators: ignore_missing publishing_status_validator
+  validators: default("draft") publishing_status_validator
 
 #### METADATA INDIKATOR ####
 
