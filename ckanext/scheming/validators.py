@@ -169,7 +169,7 @@ def email_validator(value):
     return value
 
 
-def geojson_validator(value):
+def geojson_validator(value,basestring):
     if value:
         try:
             # accept decoded geojson too
